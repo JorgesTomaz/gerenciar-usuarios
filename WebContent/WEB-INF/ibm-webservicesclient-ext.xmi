@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.etools.webservice.wscext:WsClientExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.etools.webservice.wscext="http://www.ibm.com/websphere/appserver/schemas/5.0.2/wscext.xmi" xmi:id="WsClientExtension_1628808104202">
+  <serviceRefs xmi:id="ServiceRef_1629052381754" serviceRefLink="service/FuncionarioClienteWSService">
+    <portQnameBindings xmi:id="PortQnameBinding_1629052381754" portQnameLocalNameLink="FuncionarioClienteWSPort"/>
+  </serviceRefs>
+  <serviceRefs xmi:id="ServiceRef_1629052458488" serviceRefLink="service/UsuarioPortalWSService">
+    <portQnameBindings xmi:id="PortQnameBinding_1629052458488" portQnameLocalNameLink="UsuarioPortalWSPort"/>
+  </serviceRefs>
+</com.ibm.etools.webservice.wscext:WsClientExtension>

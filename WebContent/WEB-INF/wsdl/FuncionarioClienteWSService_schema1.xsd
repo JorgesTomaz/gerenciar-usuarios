@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://usuarioportal.ws.saa.fit.cbpi/" version="1.0" xmlns:tns="http://usuarioportal.ws.saa.fit.cbpi/">
+
+  <xs:element name="alterar" type="tns:alterar"/>
+
+  <xs:element name="alterarResponse" type="tns:alterarResponse"/>
+
+  <xs:element name="associarCnpjsAoUsuario" type="tns:associarCnpjsAoUsuario"/>
+
+  <xs:element name="associarCnpjsAoUsuarioResponse" type="tns:associarCnpjsAoUsuarioResponse"/>
+
+  <xs:element name="associarPerfisAoUsuario" type="tns:associarPerfisAoUsuario"/>
+
+  <xs:element name="associarPerfisAoUsuarioResponse" type="tns:associarPerfisAoUsuarioResponse"/>
+
+  <xs:element name="incluir" type="tns:incluir"/>
+
+  <xs:element name="incluirResponse" type="tns:incluirResponse"/>
+
+  <xs:element name="listarPerfisDisponiveisParaAssociacao" type="tns:listarPerfisDisponiveisParaAssociacao"/>
+
+  <xs:element name="listarPerfisDisponiveisParaAssociacaoResponse" type="tns:listarPerfisDisponiveisParaAssociacaoResponse"/>
+
+  <xs:element name="listarUsuariosVinculadosAoUsuarioMaster" type="tns:listarUsuariosVinculadosAoUsuarioMaster"/>
+
+  <xs:element name="listarUsuariosVinculadosAoUsuarioMasterResponse" type="tns:listarUsuariosVinculadosAoUsuarioMasterResponse"/>
+
+  <xs:complexType name="alterar">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioMaster" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuarioPortal" type="tns:usuarioPortalVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="usuarioPortalVO">
+    <xs:complexContent>
+      <xs:extension base="tns:usuarioVO">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="cdPerfis" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="0" name="cpf" type="xs:string"/>
+          <xs:element minOccurs="0" name="dataAtivacao" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dddTelefone" type="xs:string"/>
+          <xs:element minOccurs="0" name="dtAlter" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="dtIncl" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="nome" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pontosDeVenda" nillable="true" type="tns:dadosClienteRIVO"/>
+          <xs:element minOccurs="0" name="senhaWebmail" type="xs:string"/>
+          <xs:element minOccurs="0" name="telefone" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="usuarioVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cdUsuarioAutenticado" type="xs:string"/>
+      <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+      <xs:element minOccurs="0" name="dtFimBloqAcesso" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dtInat" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="dtIniBloqAcesso" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="emailAlternativo" type="xs:string"/>
+      <xs:element minOccurs="0" name="prefixoEmail" type="xs:string"/>
+      <xs:element minOccurs="0" name="senha" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dadosClienteRIVO">
+    <xs:complexContent>
+      <xs:extension base="tns:dadosClienteVO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="cdPtoeCli" type="xs:string"/>
+          <xs:element name="cnpjPrincipal" type="xs:boolean"/>
+          <xs:element name="mapaPropriedades">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:anyType"/>
+                      <xs:element minOccurs="0" name="value" type="xs:anyType"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="dadosClienteVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cdPess" type="xs:string"/>
+      <xs:element minOccurs="0" name="cdPessDv" type="xs:string"/>
+      <xs:element minOccurs="0" name="cdPtov" type="xs:string"/>
+      <xs:element minOccurs="0" name="cdTipoPess" type="xs:string"/>
+      <xs:element minOccurs="0" name="nmPess" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="alterarResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseServices"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseServices">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:int"/>
+      <xs:element minOccurs="0" name="mensagem" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="incluir">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioMaster" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuarioPortal" type="tns:usuarioPortalVO"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cdPerfis" nillable="true" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pontosDeVenda" nillable="true" type="tns:dadosClienteRIVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="incluirResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseIncluirFuncionarioCliente"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseIncluirFuncionarioCliente">
+    <xs:complexContent>
+      <xs:extension base="tns:responseServices">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="login" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="listarPerfisDisponiveisParaAssociacao">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listarPerfisDisponiveisParaAssociacaoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseListarPerfisDisponiveisParaAssociacao"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseListarPerfisDisponiveisParaAssociacao">
+    <xs:complexContent>
+      <xs:extension base="tns:responseServices">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listaDePerfis" nillable="true" type="tns:perfilAcessoVO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="perfilAcessoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigo" type="xs:string"/>
+      <xs:element minOccurs="0" name="descricao" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listarUsuariosVinculadosAoUsuarioMaster">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioMaster" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listarUsuariosVinculadosAoUsuarioMasterResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseListarUsuariosVinculadosAoUsuarioMaster"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="responseListarUsuariosVinculadosAoUsuarioMaster">
+    <xs:complexContent>
+      <xs:extension base="tns:responseServices">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="listaDeUsuarios" nillable="true" type="tns:usuarioPortalVO"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="associarCnpjsAoUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioMaster" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuarioAutenticado" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="pontosDeVenda" nillable="true" type="tns:dadosClienteRIVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="associarCnpjsAoUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseServices"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="associarPerfisAoUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioMaster" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="usuarioAutenticado" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="cdPerfis" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="associarPerfisAoUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:responseServices"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

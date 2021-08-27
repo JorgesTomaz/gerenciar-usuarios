@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>  
+<div xmlns:ui="http://java.sun.com/jsf/facelets" 
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" 
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:portlet="http://java.sun.com/portlet_2_0"  class="conteudo">
+<f:view>
+  <f:event listener="#{viewhelper.meuPerfil() }" type="preRenderView"/>
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/alterarsenha.js"></script>
+  <main class="configuracoes-conta pb-sect" style="margin-top: 37px;">
+    <div class='container'>
+      <h1 class="titulo h3">Configurações da Conta</h1>
+      <nav class="menu-tab">
+      <h:form>
+        <ul class="list-unstyled mb-0 menu-tab_lista">
+          <li>
+            <h:commandLink action="#{viewhelper.meuPerfil}" immediate="true" value="Meu Perfil" styleClass="link-paginas active"/>
+          </li>
+        </ul>
+      </h:form>
+      </nav>
+      <h:messages globalOnly="true" styleClass="alert alert-success alert-dismissible"/>
+      <f:verbatim rendered="#{viewhelper.mensagemSucesso != null}">
+	      <div class="alert alert-success alert-dismissible" role="alert">
+	        <span class="icones icone-check fs-14"></span>
+	        <p>#{viewhelper.mensagemSucesso }</p>
+	        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	        <span class="icones icone-times"></span>
+	        </button>
+	      </div>
+      </f:verbatim>
+      <h2 class="titulo h4 fw-600">Meu Perfil</h2>
+      <h:form action="" method="POST" styleClass="mb-40">
+        <div class="form-row">
+          <fieldset class="col-12 col-md-6 col-lg-5 mb-4">
+            <h:outputLabel for="nomeCompleto" value="#{msg['msg.label.nome']}" styleClass="fw-600 fs-14 mb-2"/>
+            <h:inputText id='nomeCompleto' styleClass="form-control" value="#{viewhelper.perfilLogado.nome }" readonly="true"/>
+          </fieldset>
+        </div>
+        <div class="form-row">
+          <fieldset class="col-12 col-md-6 col-lg-5 mb-4">
+            <h:outputLabel for="email" value="#{msg['msg.label.email']}" styleClass="fw-600 fs-14 mb-0"/>
+            <p class='fs-14 c-cinza-60 mb-1'><em>Esse e-mail receberá uma mensagem com a senha de acesso.</em></p>
+            <h:inputText id='email' styleClass="form-control" value="#{viewhelper.perfilLogado.email }" readonly="true"/>
+          </fieldset>
+        </div>
+        <div class="form-row">
+          <fieldset class="col-12 col-md-4 col-lg-2 mb-4">
+            <h:outputLabel for="cpf" value="#{msg['msg.label.cpf']}" styleClass="fw-600 fs-14 mb-2"/>
+            <h:inputText id='cpf' styleClass="form-control cpf" value="#{viewhelper.perfilLogado.cpf }" readonly="true"/>
+          </fieldset>
+        </div>
+        <div class="form-row">
+          <h2 class="titulo h4 fw-600">Perfis do usuário.</h2>
+        </div>
+        <div class="form-row">
+          <fieldset class="col-lg-12">
+	        <table class="table table-striped table-borderless mb-3">
+	          <thead>
+	            <tr>
+	              <th class="fs-12 fw-400 c-cinza-60" width="20%">#{msg['msg.th.perfil']}</th>
+	              <th class="fs-12 fw-400 c-cinza-60">#{msg['msg.th.descricao']}</th>
+	            </tr>
+	          </thead>
+	          <tbody>
+	            <ui:repeat value="#{viewhelper.perfilLogado.perfis }" var="perfilUsuario">
+	              <tr>
+	                <td>#{perfilUsuario.nome }</td>
+	                <td class="fs-14 c-cinza-60">#{perfilUsuario.descricao } </td>
+	              </tr>
+	            </ui:repeat>
+	          </tbody>
+	        </table>
+          </fieldset>
+        </div>
+        <div class="form-row btn-senha">
+          <fieldset class="col-12 col-md-6 col-lg-3">
+            <button type="button" class="btn btn-azul" onclick="formAlterar()">#{msg['msg.btn.solicitarmudancadesenha']}</button>
+          </fieldset>
+        </div>
+        <div class="form-senha" style="display:none">
+         <div class="form-row">
+           <fieldset class="col-12 col-md-4 col-lg-2 mb-4">
+             <h:outputLabel for="senhaAtual" value="Senha Atual" styleClass="fw-600 fs-14 mb-2"/>
+             <h:inputSecret id="senhaAtual" styleClass="form-control" value="#{viewhelper.senhaAtual }">
+               <f:validator validatorId="validator.senha"/>
+             </h:inputSecret>
+             <h:message for="senhaAtual" style="color: red"/>
+           </fieldset>
+         </div>
+         <div class="form-row">
+           <fieldset class="col-12 col-md-4 col-lg-2 mb-4">
+             <h:outputLabel for="novaSenha" value="Nova Senha" styleClass="fw-600 fs-14 mb-2"/>
+             <h:inputSecret id="novaSenha" styleClass="form-control" value="#{viewhelper.novaSenha }">
+               <f:validator validatorId="validator.senha"/>
+             </h:inputSecret>
+             <h:message for="novaSenha" style="color: red"/>
+           </fieldset>
+         </div>
+         <div class="form-row">
+           <fieldset class="col-12 col-md-4 col-lg-2 mb-4">
+             <h:outputLabel for="confirmaSenha" value="Confirma Senha" styleClass="fw-600 fs-14 mb-2"/>
+             <h:inputSecret id="confirmaSenha" styleClass="form-control" value="#{viewhelper.confirmaSenha }">
+               <f:validator validatorId="validator.senha"/>
+             </h:inputSecret>
+             <h:message for="confirmaSenha" style="color: red"/>
+           </fieldset>
+         </div>
+          <h2 class="titulo h4 fw-600">Senha</h2>
+          <h:commandButton action="#{viewhelper.alterarSenha() }" styleClass="btn btn-azul mb-80" value="#{msg['msg.btn.solicitarmudancadesenha']}"/>
+        </div>
+      </h:form>
+    </div>
+  </main>
+</f:view>
+</div>

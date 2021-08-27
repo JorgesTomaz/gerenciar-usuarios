@@ -1,0 +1,1 @@
+function formAlterar(){$('.btn-senha').hide(); $('.form-senha').show();}

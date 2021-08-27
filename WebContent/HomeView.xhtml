@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>  
+<div xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" 
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:c="http://java.sun.com/jsp/jstl/core"
+  xmlns:portlet="http://java.sun.com/portlet_2_0"  >
+<f:view>
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/datatables.min.js"></script>
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/paginacao.js"></script>
+  <f:event listener="#{viewhelper.gerenciarUsuarios }" type="preRenderView"/>
+  <main class="pb-5" style="margin-top: 37px;">
+    <div class='configuracoes-conta_conteudo container'>
+      <h1 class="titulo h3">Configurações da Conta</h1>
+      <nav class="menu-tab">
+        <h:form>
+        <ul class="list-unstyled mb-0 menu-tab_lista">
+          <li>
+            <h:commandLink action="#{viewhelper.meuPerfil}" value="Meu Perfil" styleClass="link-paginas" immediate="true"/>
+          </li>
+          <li>
+            <h:commandLink action="#{viewhelper.gerenciarUsuarios}" value="Gerenciar Usuários" styleClass="link-paginas active" immediate="true"/>
+          </li>
+        </ul>
+        </h:form>
+      </nav>
+      <h:form id="formMensagem">
+        <h:panelGroup rendered="#{viewhelper.mensagemSucesso != null}">
+	      <div class="alert alert-success alert-dismissible" role="alert">
+	        <span class="icones icone-check fs-14"></span>
+	        <div>
+	          <p>#{viewhelper.mensagemSucesso }</p>
+	        </div>
+	        <h:commandLink type="button" styleClass="close">
+	          <span class="icones icone-times"></span>
+	          <f:passThroughAttribute name="data-dismiss" value="alert" />
+	          <f:passThroughAttribute name="aria-label" value="Close" />
+	          <f:ajax listener="#{viewhelper.apagarMensagem() }"/>
+	        </h:commandLink>
+	      </div>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{viewhelper.mensagemErro != null}">
+	      <div class="alert alert-danger alert-dismissible" role="alert">
+	        <span class="icones icone-check fs-14"></span>
+	        <div>
+	          <p>#{viewhelper.mensagemErro }</p>
+	        </div>
+	        <h:commandLink type="button" styleClass="close">
+	          <span class="icones icone-times"></span>
+	          <f:passThroughAttribute name="data-dismiss" value="alert" />
+	          <f:passThroughAttribute name="aria-label" value="Close" />
+	          <f:ajax listener="#{viewhelper.apagarMensagem() }"/>
+	        </h:commandLink>
+	      </div>
+        </h:panelGroup>
+      </h:form>
+      <h3 class="titulo h3">Gerenciar Usuários</h3>
+      <p class="mb-32">Abaixo você tem acesso a lista de colaboradores cadastrados no seu posto.</p>
+      <div class="row">
+        <div class="col-12 col-md-4 col-lg-3">
+          <h:form>
+            <h:commandLink action="#{viewhelper.adicionarUsuario}" value="#{msg['msg.btn.adicionarusuario']}" styleClass="btn btn-azul mb-40"/>
+          </h:form>
+        </div>
+      </div>
+      <h4 class="titulo h4 mb-32">Usuários Cadastrados</h4>
+      <h:form class="mb-40" id="usuariosVinculados">
+        <fieldset class="form-row mb-6">
+          <fieldset class="col-12 col-md-5 col-lg-5">
+            <div class="form-group">
+              <h:outputLabel for="cliente" styleClass="fw-600 fs-14" value="#{msg['msg.label.cliente']}"/>
+              <h:selectOneMenu id="cliente" value="#{viewhelper.filtroCdPess }" styleClass="custom-select form-control c-cinza-50" autoSize="false">
+                <f:selectItem itemValue = "" itemLabel = "Cliente" />
+                <f:selectItems
+                  value="#{viewhelper.clientes }"
+                  var="cliente"
+                  itemValue="#{cliente.cdPess }"
+                  itemLabel="#{cliente.nmPess }"/>
+                  <f:ajax listener="#{viewhelper.filtrarUsuarios() }" execute="cliente" render="tabelaUsuarios" event="change" onevent='function(){
+                    $(".table").DataTable({"ordering":false, "info":false,"searching": false,"autoWidth": false,"lengthChange": false,"pageLength": 5,"responsive": true,"language":{"paginate":{"previous": "&#10094;","next": "&#10095;"}}})
+                  }'/>
+              </h:selectOneMenu>
+            </div>
+          </fieldset>
+          <fieldset class="col-12 col-md-4 col-lg-2">
+            <div class="form-group">
+              <h:outputLabel for="status" styleClass="fw-600 fs-14" value="#{msg['msg.label.status']}"/>
+              <h:selectOneMenu id="status" value="#{viewhelper.filtroStatus }" styleClass="custom-select form-control c-cinza-50" autoSize="false">
+                <f:selectItem itemValue = "se" itemLabel = "Todos" />
+                <f:selectItem itemValue = "1" itemLabel = "Ativo" />
+                <f:selectItem itemValue = "2" itemLabel = "Inativo" />
+                <f:ajax listener="#{viewhelper.filtrarUsuarios() }" execute="status" render="tabelaUsuarios" event="change" onevent='function(){
+                    $(".table").DataTable({"ordering":false, "info":false,"searching": false,"autoWidth": false,"lengthChange": false,"pageLength": 5,"responsive": true,"language":{"paginate":{"previous": "&#10094;","next": "&#10095;"}}})
+                  }'/>
+              </h:selectOneMenu>
+            </div>
+          </fieldset>
+        </fieldset>
+        <h:panelGroup id="tabelaUsuarios">
+        <h:dataTable value="#{viewhelper.filtroUsuarios }" var="usuario" id="usuarios"
+           styleClass="table table-striped table-borderless table-padrao"
+           columnClasses = " ,fw-400,fw-400 d-none d-lg-table-cell,fw-400 d-none d-lg-table-cell,fw-400 d-none d-lg-table-cell,,">
+          <h:column>
+            <f:facet name="header">#{msg['msg.th.acoes']}</f:facet>
+            <h:commandLink id="editarUsuario" action="#{viewhelper.editarUsuario(usuario.codigo) }" styleClass="btn btn-icon btn-table mr-lg-2 mb-2 mb-lg-0"
+              p:title="Editar usuário" p:data-toggle="tooltip" p:data-placement="top">
+              <span class="icones icone-lapis"></span>
+            </h:commandLink>
+          </h:column>
+          <h:column>
+            <h:commandLink id="resetSenha" actionListener="#{viewhelper.resetDeSenha(usuario.codigo) }"  styleClass="btn btn-icon btn-table mr-lg-2 mb-2 mb-lg-0"
+              p:title="Reset de senha" p:data-toggle="tooltip" p:data-placement="top">
+              <span class="icones icone-chave-porta"></span>
+            </h:commandLink>
+          </h:column>
+          <h:column>
+            <f:facet name="header">#{msg['msg.th.login']}</f:facet>
+            #{usuario.login }
+          </h:column>
+          <h:column>
+            <f:facet name="header" styleClass="d-none d-lg-table-cell">#{msg['msg.th.nomecompleto']}</f:facet>
+            #{usuario.nome }
+          </h:column>
+          <h:column>
+            <f:facet name="header" styleClass="d-none d-lg-table-cell">#{msg['msg.th.perfil']}</f:facet>
+            <ui:repeat value="#{usuario.perfis }" var="perfil">
+            #{perfil.descricao }
+            </ui:repeat>
+          </h:column>
+          <h:column>
+            <f:facet name="header" styleClass="d-none d-lg-table-cell">#{msg['msg.th.clientes']}</f:facet>
+            #{usuario.clientes.size() }
+          </h:column>
+          <h:column>
+            <f:facet name="header">#{msg['msg.th.ativo']}</f:facet>
+	        <h:outputLabel styleClass="toggle-switch">
+	          <h:selectBooleanCheckbox value="#{usuario.status}" />
+	          <span class="detail">
+	            <span class="texto"></span>
+	          </span>
+	          <f:ajax listener="#{viewhelper.ativarInativarUsuario(usuario.codigo, usuario.status) }" event="click"/>
+	        </h:outputLabel>
+          </h:column>
+        </h:dataTable>
+        </h:panelGroup>
+      </h:form>
+      <button class="btn btn-azul-claro btn-voltar mt-32" onclick="javascript:history.back()">#{msg['msg.btn.voltar']}</button>
+    </div>
+  </main>
+</f:view>
+</div>

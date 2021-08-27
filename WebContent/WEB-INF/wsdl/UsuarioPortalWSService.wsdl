@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" name="UsuarioPortalWSService" targetNamespace="http://usuarioportal.ws.saa.fit.cbpi/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://usuarioportal.ws.saa.fit.cbpi/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://usuarioportal.ws.saa.fit.cbpi/" schemaLocation="UsuarioPortalWSService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="listarPerfisDoUsuarioResponse">
+    <part element="tns:listarPerfisDoUsuarioResponse" name="parameters">
+    </part>
+  </message>
+  <message name="reativarResponse">
+    <part element="tns:reativarResponse" name="parameters">
+    </part>
+  </message>
+  <message name="primeiroLogin">
+    <part element="tns:primeiroLogin" name="parameters">
+    </part>
+  </message>
+  <message name="reativar">
+    <part element="tns:reativar" name="parameters">
+    </part>
+  </message>
+  <message name="inativar">
+    <part element="tns:inativar" name="parameters">
+    </part>
+  </message>
+  <message name="listarClientesAssociadosAoUsuarioResponse">
+    <part element="tns:listarClientesAssociadosAoUsuarioResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listarPerfisDoUsuario">
+    <part element="tns:listarPerfisDoUsuario" name="parameters">
+    </part>
+  </message>
+  <message name="primeiroLoginResponse">
+    <part element="tns:primeiroLoginResponse" name="parameters">
+    </part>
+  </message>
+  <message name="criarPrimeiroLoginDoUsuarioResponse">
+    <part element="tns:criarPrimeiroLoginDoUsuarioResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listarClientesAssociadosAoUsuario">
+    <part element="tns:listarClientesAssociadosAoUsuario" name="parameters">
+    </part>
+  </message>
+  <message name="criarPrimeiroLoginDoUsuario">
+    <part element="tns:criarPrimeiroLoginDoUsuario" name="parameters">
+    </part>
+  </message>
+  <message name="inativarResponse">
+    <part element="tns:inativarResponse" name="parameters">
+    </part>
+  </message>
+  <portType name="UsuarioPortalWS">
+    <operation name="primeiroLogin">
+      <input message="tns:primeiroLogin" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/primeiroLoginRequest">
+    </input>
+      <output message="tns:primeiroLoginResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/primeiroLoginResponse">
+    </output>
+    </operation>
+    <operation name="listarClientesAssociadosAoUsuario">
+      <input message="tns:listarClientesAssociadosAoUsuario" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/listarClientesAssociadosAoUsuarioRequest">
+    </input>
+      <output message="tns:listarClientesAssociadosAoUsuarioResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/listarClientesAssociadosAoUsuarioResponse">
+    </output>
+    </operation>
+    <operation name="reativar">
+      <input message="tns:reativar" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/reativarRequest">
+    </input>
+      <output message="tns:reativarResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/reativarResponse">
+    </output>
+    </operation>
+    <operation name="criarPrimeiroLoginDoUsuario">
+      <input message="tns:criarPrimeiroLoginDoUsuario" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/criarPrimeiroLoginDoUsuarioRequest">
+    </input>
+      <output message="tns:criarPrimeiroLoginDoUsuarioResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/criarPrimeiroLoginDoUsuarioResponse">
+    </output>
+    </operation>
+    <operation name="inativar">
+      <input message="tns:inativar" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/inativarRequest">
+    </input>
+      <output message="tns:inativarResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/inativarResponse">
+    </output>
+    </operation>
+    <operation name="listarPerfisDoUsuario">
+      <input message="tns:listarPerfisDoUsuario" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/listarPerfisDoUsuarioRequest">
+    </input>
+      <output message="tns:listarPerfisDoUsuarioResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/UsuarioPortalWS/listarPerfisDoUsuarioResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="UsuarioPortalWSPortBinding" type="tns:UsuarioPortalWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="primeiroLogin">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listarClientesAssociadosAoUsuario">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="reativar">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="criarPrimeiroLoginDoUsuario">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="inativar">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listarPerfisDoUsuario">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UsuarioPortalWSService">
+    <port binding="tns:UsuarioPortalWSPortBinding" name="UsuarioPortalWSPort">
+      <soap:address location="http://wasdevtmp.ipiranga.com.br:80/WAsaaService/UsuarioPortalWSService"/>
+    </port>
+  </service>
+</definitions>

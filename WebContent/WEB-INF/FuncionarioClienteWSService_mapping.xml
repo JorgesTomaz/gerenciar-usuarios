@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE java-wsdl-mapping PUBLIC "-//IBM Corporation, Inc.//DTD J2EE JAX-RPC mapping 1.0//EN" "http://www.ibm.com/webservices/dtd/j2ee_jaxrpc_mapping_1_0.dtd">
+
+   <java-wsdl-mapping id="JavaWSDLMapping_1629052379838">
+      <package-mapping id="PackageMapping_1629052379839">
+         <package-type>cbpi.fit.saa.ws.usuarioportal</package-type>
+         <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+      </package-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379841">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.Entry[]</class-type>
+         <root-type-qname id="RootTypeQname_1629052379841">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>dadosClienteRIVO&gt;mapaPropriedades&gt;entry[unbounded]</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379842">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AlterarResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379842">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>alterarResponse</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379843">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AlterarResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379843">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>alterarResponse</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379843">
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379844">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarUsuariosVinculadosAoUsuarioMasterResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379844">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarUsuariosVinculadosAoUsuarioMasterResponse</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379845">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarUsuariosVinculadosAoUsuarioMasterResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379845">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarUsuariosVinculadosAoUsuarioMasterResponse</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379844">
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379846">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.UsuarioPortalVO[]</class-type>
+         <root-type-qname id="RootTypeQname_1629052379846">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>usuarioPortalVO[unbounded]</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379847">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.DadosClienteRIVO</class-type>
+         <root-type-qname id="RootTypeQname_1629052379847">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>dadosClienteRIVO</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379845">
+            <java-variable-name>cdPtoeCli</java-variable-name>
+            <xml-element-name>cdPtoeCli</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379846">
+            <java-variable-name>cnpjPrincipal</java-variable-name>
+            <xml-element-name>cnpjPrincipal</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379847">
+            <java-variable-name>mapaPropriedades</java-variable-name>
+            <xml-element-name>mapaPropriedades</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379848">
+         <class-type>boolean</class-type>
+         <root-type-qname id="RootTypeQname_1629052379848">
+            <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+            <localpart>boolean</localpart>
+         </root-type-qname>
+         <qname-scope>simpleType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379849">
+         <class-type>java.util.Calendar</class-type>
+         <root-type-qname id="RootTypeQname_1629052379849">
+            <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+            <localpart>dateTime</localpart>
+         </root-type-qname>
+         <qname-scope>simpleType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379850">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AssociarPerfisAoUsuarioResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379850">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>associarPerfisAoUsuarioResponse</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379851">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AssociarPerfisAoUsuarioResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379851">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>associarPerfisAoUsuarioResponse</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379848">
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379852">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AssociarPerfisAoUsuario</class-type>
+         <root-type-qname id="RootTypeQname_1629052379852">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>associarPerfisAoUsuario</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379853">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AssociarPerfisAoUsuario</class-type>
+         <root-type-qname id="RootTypeQname_1629052379853">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>associarPerfisAoUsuario</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379849">
+            <java-variable-name>usuarioMaster</java-variable-name>
+            <xml-element-name>usuarioMaster</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379850">
+            <java-variable-name>usuario</java-variable-name>
+            <xml-element-name>usuario</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379851">
+            <java-variable-name>usuarioAutenticado</java-variable-name>
+            <xml-element-name>usuarioAutenticado</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379852">
+            <java-variable-name>cdPerfis</java-variable-name>
+            <xml-element-name>cdPerfis</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379854">
+         <class-type>java.lang.String</class-type>
+         <root-type-qname id="RootTypeQname_1629052379854">
+            <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+            <localpart>string</localpart>
+         </root-type-qname>
+         <qname-scope>simpleType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379855">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.PerfilAcessoVO[]</class-type>
+         <root-type-qname id="RootTypeQname_1629052379855">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>perfilAcessoVO[unbounded]</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379856">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.Alterar</class-type>
+         <root-type-qname id="RootTypeQname_1629052379856">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>alterar</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379857">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.Alterar</class-type>
+         <root-type-qname id="RootTypeQname_1629052379857">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>alterar</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379853">
+            <java-variable-name>usuarioMaster</java-variable-name>
+            <xml-element-name>usuarioMaster</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379854">
+            <java-variable-name>usuarioPortal</java-variable-name>
+            <xml-element-name>usuarioPortal</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379858">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.MapaPropriedades</class-type>
+         <root-type-qname id="RootTypeQname_1629052379858">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>dadosClienteRIVO&gt;mapaPropriedades</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379855">
+            <java-variable-name>entry</java-variable-name>
+            <xml-element-name>entry</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379859">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ResponseListarPerfisDisponiveisParaAssociacao</class-type>
+         <root-type-qname id="RootTypeQname_1629052379859">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>responseListarPerfisDisponiveisParaAssociacao</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379856">
+            <java-variable-name>listaDePerfis</java-variable-name>
+            <xml-element-name>listaDePerfis</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379860">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.DadosClienteRIVO[]</class-type>
+         <root-type-qname id="RootTypeQname_1629052379860">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>dadosClienteRIVO[unbounded]</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379861">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.IncluirResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379861">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>incluirResponse</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379862">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.IncluirResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379862">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>incluirResponse</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379857">
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379863">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ResponseIncluirFuncionarioCliente</class-type>
+         <root-type-qname id="RootTypeQname_1629052379863">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>responseIncluirFuncionarioCliente</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379858">
+            <java-variable-name>login</java-variable-name>
+            <xml-element-name>login</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379864">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.PerfilAcessoVO</class-type>
+         <root-type-qname id="RootTypeQname_1629052379864">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>perfilAcessoVO</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379859">
+            <java-variable-name>codigo</java-variable-name>
+            <xml-element-name>codigo</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379860">
+            <java-variable-name>descricao</java-variable-name>
+            <xml-element-name>descricao</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379865">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarPerfisDisponiveisParaAssociacaoResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379865">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarPerfisDisponiveisParaAssociacaoResponse</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379866">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarPerfisDisponiveisParaAssociacaoResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379866">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarPerfisDisponiveisParaAssociacaoResponse</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379861">
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379867">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.Incluir</class-type>
+         <root-type-qname id="RootTypeQname_1629052379867">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>incluir</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379868">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.Incluir</class-type>
+         <root-type-qname id="RootTypeQname_1629052379868">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>incluir</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379862">
+            <java-variable-name>usuarioMaster</java-variable-name>
+            <xml-element-name>usuarioMaster</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379863">
+            <java-variable-name>usuarioPortal</java-variable-name>
+            <xml-element-name>usuarioPortal</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379864">
+            <java-variable-name>cdPerfis</java-variable-name>
+            <xml-element-name>cdPerfis</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379865">
+            <java-variable-name>pontosDeVenda</java-variable-name>
+            <xml-element-name>pontosDeVenda</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379869">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.UsuarioPortalVO</class-type>
+         <root-type-qname id="RootTypeQname_1629052379869">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>usuarioPortalVO</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379866">
+            <java-variable-name>cdPerfis</java-variable-name>
+            <xml-element-name>cdPerfis</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379867">
+            <java-variable-name>cpf</java-variable-name>
+            <xml-element-name>cpf</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379868">
+            <java-variable-name>dataAtivacao</java-variable-name>
+            <xml-element-name>dataAtivacao</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379869">
+            <java-variable-name>dddTelefone</java-variable-name>
+            <xml-element-name>dddTelefone</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379870">
+            <java-variable-name>dtAlter</java-variable-name>
+            <xml-element-name>dtAlter</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379871">
+            <java-variable-name>dtIncl</java-variable-name>
+            <xml-element-name>dtIncl</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379872">
+            <java-variable-name>nome</java-variable-name>
+            <xml-element-name>nome</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379873">
+            <java-variable-name>pontosDeVenda</java-variable-name>
+            <xml-element-name>pontosDeVenda</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379874">
+            <java-variable-name>senhaWebmail</java-variable-name>
+            <xml-element-name>senhaWebmail</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379875">
+            <java-variable-name>telefone</java-variable-name>
+            <xml-element-name>telefone</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379870">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.UsuarioVO</class-type>
+         <root-type-qname id="RootTypeQname_1629052379870">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>usuarioVO</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379876">
+            <java-variable-name>cdUsuarioAutenticado</java-variable-name>
+            <xml-element-name>cdUsuarioAutenticado</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379877">
+            <java-variable-name>codigo</java-variable-name>
+            <xml-element-name>codigo</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379878">
+            <java-variable-name>dtFimBloqAcesso</java-variable-name>
+            <xml-element-name>dtFimBloqAcesso</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379879">
+            <java-variable-name>dtInat</java-variable-name>
+            <xml-element-name>dtInat</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379880">
+            <java-variable-name>dtIniBloqAcesso</java-variable-name>
+            <xml-element-name>dtIniBloqAcesso</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379881">
+            <java-variable-name>email</java-variable-name>
+            <xml-element-name>email</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379882">
+            <java-variable-name>emailAlternativo</java-variable-name>
+            <xml-element-name>emailAlternativo</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379883">
+            <java-variable-name>prefixoEmail</java-variable-name>
+            <xml-element-name>prefixoEmail</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379884">
+            <java-variable-name>senha</java-variable-name>
+            <xml-element-name>senha</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379871">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.Entry</class-type>
+         <root-type-qname id="RootTypeQname_1629052379871">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>dadosClienteRIVO&gt;mapaPropriedades&gt;entry</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379885">
+            <java-variable-name>key</java-variable-name>
+            <xml-element-name>key</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379886">
+            <java-variable-name>value</java-variable-name>
+            <xml-element-name>value</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379872">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AssociarCnpjsAoUsuarioResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379872">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>associarCnpjsAoUsuarioResponse</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379873">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.AssociarCnpjsAoUsuarioResponse</class-type>
+         <root-type-qname id="RootTypeQname_1629052379873">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>associarCnpjsAoUsuarioResponse</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379887">
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379874">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ResponseListarUsuariosVinculadosAoUsuarioMaster</class-type>
+         <root-type-qname id="RootTypeQname_1629052379874">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>responseListarUsuariosVinculadosAoUsuarioMaster</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379888">
+            <java-variable-name>listaDeUsuarios</java-variable-name>
+            <xml-element-name>listaDeUsuarios</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379875">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarPerfisDisponiveisParaAssociacao</class-type>
+         <root-type-qname id="RootTypeQname_1629052379875">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarPerfisDisponiveisParaAssociacao</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379876">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarPerfisDisponiveisParaAssociacao</class-type>
+         <root-type-qname id="RootTypeQname_1629052379876">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarPerfisDisponiveisParaAssociacao</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379889">
+            <java-variable-name>usuario</java-variable-name>
+            <xml-element-name>usuario</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379877">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ResponseServices</class-type>
+         <root-type-qname id="RootTypeQname_1629052379877">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>responseServices</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379890">
+            <java-variable-name>codigo</java-variable-name>
+            <xml-element-name>codigo</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379891">
+            <java-variable-name>mensagem</java-variable-name>
+            <xml-element-name>mensagem</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379878">
+         <class-type>int</class-type>
+         <root-type-qname id="RootTypeQname_1629052379878">
+            <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+            <localpart>int</localpart>
+         </root-type-qname>
+         <qname-scope>simpleType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379879">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarUsuariosVinculadosAoUsuarioMaster</class-type>
+         <root-type-qname id="RootTypeQname_1629052379879">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarUsuariosVinculadosAoUsuarioMaster</localpart>
+         </root-type-qname>
+         <qname-scope>element</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379880">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.ListarUsuariosVinculadosAoUsuarioMaster</class-type>
+         <root-type-qname id="RootTypeQname_1629052379880">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>listarUsuariosVinculadosAoUsuarioMaster</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379892">
+            <java-variable-name>usuarioMaster</java-variable-name>
+            <xml-element-name>usuarioMaster</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379881">
+         <class-type>java.lang.String[]</class-type>
+         <root-type-qname id="RootTypeQname_1629052379881">
+            <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+            <localpart>string[unbounded]</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379882">
+         <class-type>cbpi.fit.saa.ws.usuarioportal.DadosClienteVO</class-type>
+         <root-type-qname id="RootTypeQname_1629052379882">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>dadosClienteVO</localpart>
+         </root-type-qname>
+         <qname-scope>complexType</qname-scope>
+         <variable-mapping id="VariableMapping_1629052379893">
+            <java-variable-name>cdPess</java-variable-name>
+            <xml-element-name>cdPess</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379894">
+            <java-variable-name>cdPessDv</java-variable-name>
+            <xml-element-name>cdPessDv</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379895">
+            <java-variable-name>cdPtov</java-variable-name>
+            <xml-element-name>cdPtov</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379896">
+            <java-variable-name>cdTipoPess</java-variable-name>
+            <xml-element-name>cdTipoPess</xml-element-name>
+         </variable-mapping>
+         <variable-mapping id="VariableMapping_1629052379897">
+            <java-variable-name>nmPess</java-variable-name>
+            <xml-element-name>nmPess</xml-element-name>
+         </variable-mapping>
+      </java-xml-type-mapping>
+      <java-xml-type-mapping id="JavaXMLTypeMapping_1629052379883">
+         <class-type>java.lang.Object</class-type>
+         <root-type-qname id="RootTypeQname_1629052379883">
+            <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+            <localpart>anyType</localpart>
+         </root-type-qname>
+         <qname-scope>simpleType</qname-scope>
+      </java-xml-type-mapping>
+      <service-interface-mapping id="ServiceInterfaceMapping_1629052379852">
+         <service-interface>cbpi.fit.saa.ws.usuarioportal.FuncionarioClienteWSService</service-interface>
+         <wsdl-service-name id="WSDLServiceName_1629052379852">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>FuncionarioClienteWSService</localpart>
+         </wsdl-service-name>
+         <port-mapping id="PortMapping_1629052379852">
+            <port-name>FuncionarioClienteWSPort</port-name>
+            <java-port-name>FuncionarioClienteWSPort</java-port-name>
+         </port-mapping>
+      </service-interface-mapping>
+      <service-endpoint-interface-mapping id="ServiceEndpointInterfaceMapping_1629052379852">
+         <service-endpoint-interface>cbpi.fit.saa.ws.usuarioportal.FuncionarioClienteWS</service-endpoint-interface>
+         <wsdl-port-type id="WSDLPortType_1629052379853">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>FuncionarioClienteWS</localpart>
+         </wsdl-port-type>
+         <wsdl-binding id="WSDLBinding_1629052379853">
+            <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+            <localpart>FuncionarioClienteWSPortBinding</localpart>
+         </wsdl-binding>
+         <service-endpoint-method-mapping id="ServiceEndpointMethodMapping_1629052379854">
+            <java-method-name>listarUsuariosVinculadosAoUsuarioMaster</java-method-name>
+            <wsdl-operation>listarUsuariosVinculadosAoUsuarioMaster</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379855">
+               <param-position>0</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379855">
+                  <wsdl-message id="WSDLMessage_1629052379855">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>listarUsuariosVinculadosAoUsuarioMaster</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioMaster</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping id="WSDLReturnValueMapping_1629052379855">
+               <method-return-value>cbpi.fit.saa.ws.usuarioportal.ResponseListarUsuariosVinculadosAoUsuarioMaster</method-return-value>
+               <wsdl-message id="WSDLMessage_1629052379856">
+                  <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                  <localpart>listarUsuariosVinculadosAoUsuarioMasterResponse</localpart>
+               </wsdl-message>
+               <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+         </service-endpoint-method-mapping>
+         <service-endpoint-method-mapping id="ServiceEndpointMethodMapping_1629052379855">
+            <java-method-name>incluir</java-method-name>
+            <wsdl-operation>incluir</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379856">
+               <param-position>0</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379856">
+                  <wsdl-message id="WSDLMessage_1629052379857">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>incluir</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioMaster</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379857">
+               <param-position>1</param-position>
+               <param-type>cbpi.fit.saa.ws.usuarioportal.UsuarioPortalVO</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379857">
+                  <wsdl-message id="WSDLMessage_1629052379858">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>incluir</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioPortal</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379858">
+               <param-position>2</param-position>
+               <param-type>java.lang.String[]</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379858">
+                  <wsdl-message id="WSDLMessage_1629052379859">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>incluir</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>cdPerfis</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379859">
+               <param-position>3</param-position>
+               <param-type>cbpi.fit.saa.ws.usuarioportal.DadosClienteRIVO[]</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379859">
+                  <wsdl-message id="WSDLMessage_1629052379860">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>incluir</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>pontosDeVenda</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping id="WSDLReturnValueMapping_1629052379856">
+               <method-return-value>cbpi.fit.saa.ws.usuarioportal.ResponseIncluirFuncionarioCliente</method-return-value>
+               <wsdl-message id="WSDLMessage_1629052379861">
+                  <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                  <localpart>incluirResponse</localpart>
+               </wsdl-message>
+               <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+         </service-endpoint-method-mapping>
+         <service-endpoint-method-mapping id="ServiceEndpointMethodMapping_1629052379856">
+            <java-method-name>listarPerfisDisponiveisParaAssociacao</java-method-name>
+            <wsdl-operation>listarPerfisDisponiveisParaAssociacao</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379860">
+               <param-position>0</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379860">
+                  <wsdl-message id="WSDLMessage_1629052379862">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>listarPerfisDisponiveisParaAssociacao</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuario</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping id="WSDLReturnValueMapping_1629052379857">
+               <method-return-value>cbpi.fit.saa.ws.usuarioportal.ResponseListarPerfisDisponiveisParaAssociacao</method-return-value>
+               <wsdl-message id="WSDLMessage_1629052379863">
+                  <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                  <localpart>listarPerfisDisponiveisParaAssociacaoResponse</localpart>
+               </wsdl-message>
+               <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+         </service-endpoint-method-mapping>
+         <service-endpoint-method-mapping id="ServiceEndpointMethodMapping_1629052379857">
+            <java-method-name>associarPerfisAoUsuario</java-method-name>
+            <wsdl-operation>associarPerfisAoUsuario</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379861">
+               <param-position>0</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379861">
+                  <wsdl-message id="WSDLMessage_1629052379864">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarPerfisAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioMaster</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379862">
+               <param-position>1</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379862">
+                  <wsdl-message id="WSDLMessage_1629052379865">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarPerfisAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuario</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379863">
+               <param-position>2</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379863">
+                  <wsdl-message id="WSDLMessage_1629052379866">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarPerfisAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioAutenticado</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379864">
+               <param-position>3</param-position>
+               <param-type>java.lang.String[]</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379864">
+                  <wsdl-message id="WSDLMessage_1629052379867">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarPerfisAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>cdPerfis</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping id="WSDLReturnValueMapping_1629052379858">
+               <method-return-value>cbpi.fit.saa.ws.usuarioportal.ResponseServices</method-return-value>
+               <wsdl-message id="WSDLMessage_1629052379868">
+                  <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                  <localpart>associarPerfisAoUsuarioResponse</localpart>
+               </wsdl-message>
+               <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+         </service-endpoint-method-mapping>
+         <service-endpoint-method-mapping id="ServiceEndpointMethodMapping_1629052379858">
+            <java-method-name>alterar</java-method-name>
+            <wsdl-operation>alterar</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379865">
+               <param-position>0</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379865">
+                  <wsdl-message id="WSDLMessage_1629052379869">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>alterar</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioMaster</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379866">
+               <param-position>1</param-position>
+               <param-type>cbpi.fit.saa.ws.usuarioportal.UsuarioPortalVO</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379866">
+                  <wsdl-message id="WSDLMessage_1629052379870">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>alterar</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioPortal</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping id="WSDLReturnValueMapping_1629052379859">
+               <method-return-value>cbpi.fit.saa.ws.usuarioportal.ResponseServices</method-return-value>
+               <wsdl-message id="WSDLMessage_1629052379871">
+                  <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                  <localpart>alterarResponse</localpart>
+               </wsdl-message>
+               <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+         </service-endpoint-method-mapping>
+         <service-endpoint-method-mapping id="ServiceEndpointMethodMapping_1629052379859">
+            <java-method-name>associarCnpjsAoUsuario</java-method-name>
+            <wsdl-operation>associarCnpjsAoUsuario</wsdl-operation>
+            <wrapped-element></wrapped-element>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379867">
+               <param-position>0</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379867">
+                  <wsdl-message id="WSDLMessage_1629052379872">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarCnpjsAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioMaster</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379868">
+               <param-position>1</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379868">
+                  <wsdl-message id="WSDLMessage_1629052379873">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarCnpjsAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuario</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379869">
+               <param-position>2</param-position>
+               <param-type>java.lang.String</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379869">
+                  <wsdl-message id="WSDLMessage_1629052379874">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarCnpjsAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>usuarioAutenticado</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping id="MethodParamPartsMapping_1629052379870">
+               <param-position>3</param-position>
+               <param-type>cbpi.fit.saa.ws.usuarioportal.DadosClienteRIVO[]</param-type>
+               <wsdl-message-mapping id="WSDLMessageMapping_1629052379870">
+                  <wsdl-message id="WSDLMessage_1629052379875">
+                     <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                     <localpart>associarCnpjsAoUsuario</localpart>
+                  </wsdl-message>
+                  <wsdl-message-part-name>pontosDeVenda</wsdl-message-part-name>
+                  <parameter-mode>IN</parameter-mode>
+               </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping id="WSDLReturnValueMapping_1629052379860">
+               <method-return-value>cbpi.fit.saa.ws.usuarioportal.ResponseServices</method-return-value>
+               <wsdl-message id="WSDLMessage_1629052379876">
+                  <namespaceURI>http://usuarioportal.ws.saa.fit.cbpi/</namespaceURI>
+                  <localpart>associarCnpjsAoUsuarioResponse</localpart>
+               </wsdl-message>
+               <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+         </service-endpoint-method-mapping>
+      </service-endpoint-interface-mapping>
+   </java-wsdl-mapping>

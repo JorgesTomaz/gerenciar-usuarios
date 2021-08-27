@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>  
+<div xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html" 
+  xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+  xmlns:jsf="http://xmlns.jcp.org/jsf"
+  xmlns:portlet="http://java.sun.com/portlet_2_0">
+<f:view>
+  <main class="configuracoes-conta" style="margin-top: 37px;">
+    <div class='configuracoes-conta_conteudo container'>
+      <h3 class='titulo h3 fw-600'>Configurações da Conta</h3>
+      <nav class="menu-tab">
+      <h:form>
+        <ul class="list-unstyled mb-0 menu-tab_lista">
+          <li>
+            <h:commandLink action="#{viewhelper.meuPerfil}" value="Meu Perfil" immediate="true" styleClass="link-paginas"/>
+          </li>
+          <li>
+            <h:commandLink action="#{viewhelper.gerenciarUsuarios}" immediate="true" value="Gerenciar Usuários" styleClass="link-paginas active"/>
+          </li>
+        </ul>
+      </h:form>
+      </nav>
+      <h:form id="formMensagem">
+        <h:panelGroup rendered="#{viewhelper.mensagemSucesso != null}">
+	      <div class="alert alert-success alert-dismissible" role="alert">
+	        <span class="icones icone-check fs-14"></span>
+	        <div>
+	          <p>#{viewhelper.mensagemSucesso }</p>
+	        </div>
+	        <h:commandLink type="button" styleClass="close">
+	          <span class="icones icone-times"></span>
+	          <f:passThroughAttribute name="data-dismiss" value="alert" />
+	          <f:passThroughAttribute name="aria-label" value="Close" />
+	          <f:ajax listener="#{viewhelper.apagarMensagem() }"/>
+	        </h:commandLink>
+	      </div>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{viewhelper.mensagemErro != null}">
+	      <div class="alert alert-danger alert-dismissible" role="alert">
+	        <span class="icones icone-check fs-14"></span>
+	        <div>
+	          <p>#{viewhelper.mensagemErro }</p>
+	        </div>
+	        <h:commandLink type="button" styleClass="close">
+	          <span class="icones icone-times"></span>
+	          <f:passThroughAttribute name="data-dismiss" value="alert" />
+	          <f:passThroughAttribute name="aria-label" value="Close" />
+	          <f:ajax listener="#{viewhelper.apagarMensagem() }"/>
+	        </h:commandLink>
+	      </div>
+        </h:panelGroup>
+      </h:form>
+      <h3 class="titulo h3 fw-600">Adicionar novo usuário</h3>
+      <div class='box box-azul-claro box-ajuda'>
+        <div class="box-ajuda_cont">
+          <h4 class='titulo h4 fw-600'>Dúvidas de como adicionar um usuário?</h4>
+          <p class='fs-16'>Acesse nossa central de ajuda e entenda tudo sobre essa e outras funcionalidade do Portal Rede Ipiranga.</p>
+          <a href="#{viewhelper.centralDeAjuda }" tabindex="0" class='btn btn-azul'>#{msg['msg.btn.ajuda']}</a>
+        </div>
+        <img class="box_img" src="#{facesContext.externalContext.requestContextPath}/resources/duvidas-adicionar-usuario.png" alt="Foto dúvidas adicionar"/>
+      </div>
+      <div>
+      <h:messages id="mensagensPortlet" errorStyle="color:red" infoStyle="color:green" style="color:#cc092f;"
+		globalOnly="true" showDetail="true" showSummary="false" />
+      </div>
+      <p class="fs-14 mt-4 mb-4">Preencha os dados para incluir um novo usuário no seu negócio.</p>
+      <h:form id="formUsuario" styleClass="form-adicionar-usuarios">
+        <fieldset class="row">
+          <fieldset class="col-12 col-md-6 col-lg-5">
+            <div class="form-group">
+              <h:outputLabel for="cliente" value="#{msg['msg.label.cliente']}" styleClass="fw-600 fs-14"/>
+              <h:selectOneMenu id="cliente" value="#{viewhelper.cdPessDv }" styleClass="custom-select form-control c-cinza-50" autoSize="false">
+                <f:selectItem itemValue = "" itemLabel = "Selecione" />
+                <f:selectItems 
+                  value="#{viewhelper.clientes }"
+                  var="cliente"
+                  itemValue="#{cliente.cdPessDv }"
+                  itemLabel="#{cliente.nmPess }"
+                />
+              </h:selectOneMenu>
+            </div>
+          </fieldset>
+          <div class="col-12 col-md">
+            <label class="label-hidden">#{msg['msg.btn.adicionar']}</label>
+            <h:commandButton value="#{msg['msg.btn.adicionarcliente']}" styleClass="btn-adicionar-cliente btn btn-azul-claro">
+              <f:ajax listener="#{viewhelper.adicionarCliente() }" execute="cliente" render="clientesUsuario" event="click" />
+            </h:commandButton>
+          </div>
+        </fieldset>
+        <h:dataTable value="#{viewhelper.novoUsuario.clientes }" var="clienteUsuario" 
+          id="clientesUsuario" styleClass="table table-striped table-borderless"
+          columnClasses=",,text-center">
+          <h:column>
+            <f:facet name="header"><div class="fs-12 fw-400 c-cinza-60 text-center">#{msg['msg.th.principal']}</div></f:facet>
+		    <f:verbatim rendered="#{clienteUsuario.cnpjPrincipal == true}">
+		      <span class="icones icone-star-fill c-secundaria"></span>
+		    </f:verbatim>
+		    <f:verbatim rendered="#{clienteUsuario.cnpjPrincipal == false}">
+		      <span class="icones icone-star"></span>
+		    </f:verbatim>
+          </h:column>
+          <h:column>
+            <f:facet name="header"><div class="fs-12 fw-400 c-cinza-60">#{msg['msg.th.nomedocliente']}</div></f:facet>
+            #{clienteUsuario.cdPessDv } |<b>#{clienteUsuario.nmPess }</b>
+          </h:column>
+          <h:column>
+            <f:facet name="header"><div class="fs-12 fw-400 c-cinza-60">#{msg['msg.th.remover']}</div></f:facet>
+		    <h:commandButton id="btnExcluir" 
+		       styleClass="btn btn-transparent btn-icon btn-remover" 
+		       image="/resources/lixeira.svg" 
+		       actionListener="#{viewhelper.removerCliente(clienteUsuario.cdPessDv) }">
+		       <f:ajax render="formUsuario:clientesUsuario"/>
+		    </h:commandButton>
+          </h:column>
+        </h:dataTable>
+        <div class="row mb-3">
+          <div class="col-12 col-md-6">
+            <h:outputLabel for="nomeCompleto" value="#{msg['msg.label.nome']}" styleClass="fw-600 fs-14"/>
+            <h:inputText  id='nomeCompleto' styleClass="form-control" value="#{viewhelper.novoUsuario.nome }">
+            	<f:validator validatorId="validator.nome"/>
+            </h:inputText>
+            <h:message for="nomeCompleto" style="color: red"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 col-md-6">
+            <h:outputLabel for="email" value="#{msg['msg.label.email']}" styleClass="fw-600 fs-14 mb-0"/>
+            <p class='c-cinza-60 fs-14 mb-2'><i>Esse e-mail receberá uma mensagem com a senha de acesso.</i></p>
+            <h:inputText  id='email' styleClass="form-control" value="#{viewhelper.novoUsuario.email }" p:placeholder="seuemail@email.com">
+            	<f:validator validatorId="validator.email"/>
+            </h:inputText>
+            <h:message for="email" style="color: red"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 col-md-4 col-lg-3">
+            <h:outputLabel for="telefone" value="#{msg['msg.label.telefone']}" styleClass="fw-600 fs-14"/>
+            <h:inputText  id='telefone' styleClass="form-control telefone" value="#{viewhelper.novoUsuario.telefone }"
+             p:placeholder="(00) 0 0000-0000">
+             	<f:validator validatorId="validator.telefone"/>
+            </h:inputText>
+            <h:message for="telefone" style="color: red"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 col-md-4 col-lg-3">
+            <h:outputLabel for="cpf" value="#{msg['msg.label.cpf']}" styleClass="fw-600 fs-14"/>
+            <h:inputText  id='cpf' styleClass="form-control cpf cpf-mask" value="#{viewhelper.novoUsuario.cpf }"
+              maxlength="14" p:placeholder="000.000.000-00"
+              onkeypress="return event.charCode &gt;= 48 &amp;&amp; event.charCode &lt;= 57">
+            <f:validator validatorId="validator.CpfValidator"/>
+            </h:inputText>
+            <h:message for="cpf" style="color: red"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-12 col-md-4">
+            <h:outputLabel for="perfil" value="#{msg['msg.label.perfil']}" styleClass="fw-600 fs-14"/>
+            <h:selectOneMenu id="perfil" value="#{viewhelper.codigoPerfil }" styleClass="custom-select form-control">
+              <f:selectItem itemValue = "" itemLabel = "Selecione" />
+              <f:selectItems 
+                value="#{viewhelper.perfis }"
+                var = "perfil"
+                itemValue="#{perfil.codigo }" 
+                itemLabel="#{perfil.nome }"/>
+            </h:selectOneMenu>
+          </div>
+          <div class="col-12 col-md">
+            <label class="label-hidden">#{msg['msg.btn.adicionarperfil']}</label>
+            <h:commandButton value="#{msg['msg.btn.adicionarperfil']}" styleClass="btn btn-azul-claro">
+              <f:ajax listener="#{viewhelper.adicionarPerfil() }" execute="perfil" render="perfisUsuario" event="click"/>
+            </h:commandButton>
+          </div>
+        </div>
+        <h:dataTable value="#{viewhelper.novoUsuario.perfis }" var="perfilUsuario"
+             id="perfisUsuario" styleClass="table table-striped table-borderless mb-3"
+             columnClasses=",fs-14 c-cinza-60,text-center">
+          <h:column>
+            <f:facet name="header"><div class="fs-12 fw-400 c-cinza-60">#{msg['msg.th.perfil']}</div></f:facet>
+            #{perfilUsuario.nome }
+          </h:column>
+          <h:column>
+            <f:facet name="header"><div class="fs-12 fw-400 c-cinza-60">#{msg['msg.th.descricao']}</div></f:facet>
+            <a href="#{perfilUsuario.document }" target="_blank" class="link-azul">#{perfilUsuario.descricao }</a>
+          </h:column>
+          <h:column>
+            <f:facet name="header"><div class="fs-12 fw-400 c-cinza-60 text-center">#{msg['msg.th.remover']}</div></f:facet>
+		    <h:commandButton id="excluirPerfil" styleClass="btn btn-transparent btn-icon btn-remover" 
+		     image="/resources/lixeira.svg" 
+		     actionListener="#{viewhelper.removerPerfil(perfilUsuario.codigo) }">
+		     <f:ajax render="formUsuario:perfisUsuario"/>
+		    </h:commandButton>
+          </h:column>
+        </h:dataTable>
+        <div class="custom-control custom-checkbox mb-4">
+			<h:selectBooleanCheckbox value="#{viewhelper.aceito }" styleClass="declaro" id="declaro" 
+			  required="true" requiredMessage="O aceite é obrigatório">
+			  <f:validator validatorId="requiredCheckboxValidator" />
+			</h:selectBooleanCheckbox>
+            <h:outputLabel for="declaro" styleClass="custom-control-labe">Declaro que aceito o <a href="#" tabindex="0" class="link-azul">termo de responsabilidade</a>.</h:outputLabel>
+            <h:message for="declaro" syleClass="custom-control-labe validation" infoStyle="color: green;" errorStyle="color: #cc092f;"/>
+        </div>
+        <div class="d-flex flex-column flex-md-row align-items-md-center">
+          <h:commandButton value="#{msg['msg.btn.cadastrarusuario']}" action="#{viewhelper.cadastrarUsuario }" styleClass="btn btn-azul"/>
+        </div>
+        <div>
+          <h:commandButton action="#{viewhelper.voltarHome}" value="#{msg['msg.btn.voltar']}" immediate="true" styleClass="btn btn-azul-claro btn-voltar mt-5 mb-4" style="width: 113px;"/>
+        </div>
+      </h:form>
+    </div>
+  </main>
+  <style>
+    select.form-control[size]{height: 53px;}
+    .declaro{margin: 0 5px 0 -10px;}
+  </style>
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/mask.js"></script>
+  <script src="#{facesContext.externalContext.requestContextPath}/resources/js/adicionar_usuario.js"></script>
+</f:view>
+</div>

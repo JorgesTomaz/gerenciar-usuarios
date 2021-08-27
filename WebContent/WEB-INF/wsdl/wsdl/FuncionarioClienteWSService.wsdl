@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" name="FuncionarioClienteWSService" targetNamespace="http://usuarioportal.ws.saa.fit.cbpi/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://usuarioportal.ws.saa.fit.cbpi/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://usuarioportal.ws.saa.fit.cbpi/" schemaLocation="FuncionarioClienteWSService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="listarPerfisDisponiveisParaAssociacaoResponse">
+    <part element="tns:listarPerfisDisponiveisParaAssociacaoResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listarUsuariosVinculadosAoUsuarioMaster">
+    <part element="tns:listarUsuariosVinculadosAoUsuarioMaster" name="parameters">
+    </part>
+  </message>
+  <message name="incluirResponse">
+    <part element="tns:incluirResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listarPerfisDisponiveisParaAssociacao">
+    <part element="tns:listarPerfisDisponiveisParaAssociacao" name="parameters">
+    </part>
+  </message>
+  <message name="incluir">
+    <part element="tns:incluir" name="parameters">
+    </part>
+  </message>
+  <message name="alterar">
+    <part element="tns:alterar" name="parameters">
+    </part>
+  </message>
+  <message name="associarPerfisAoUsuarioResponse">
+    <part element="tns:associarPerfisAoUsuarioResponse" name="parameters">
+    </part>
+  </message>
+  <message name="alterarResponse">
+    <part element="tns:alterarResponse" name="parameters">
+    </part>
+  </message>
+  <message name="associarPerfisAoUsuario">
+    <part element="tns:associarPerfisAoUsuario" name="parameters">
+    </part>
+  </message>
+  <message name="associarCnpjsAoUsuario">
+    <part element="tns:associarCnpjsAoUsuario" name="parameters">
+    </part>
+  </message>
+  <message name="associarCnpjsAoUsuarioResponse">
+    <part element="tns:associarCnpjsAoUsuarioResponse" name="parameters">
+    </part>
+  </message>
+  <message name="listarUsuariosVinculadosAoUsuarioMasterResponse">
+    <part element="tns:listarUsuariosVinculadosAoUsuarioMasterResponse" name="parameters">
+    </part>
+  </message>
+  <portType name="FuncionarioClienteWS">
+    <operation name="associarCnpjsAoUsuario">
+      <input message="tns:associarCnpjsAoUsuario" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/associarCnpjsAoUsuarioRequest">
+    </input>
+      <output message="tns:associarCnpjsAoUsuarioResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/associarCnpjsAoUsuarioResponse">
+    </output>
+    </operation>
+    <operation name="associarPerfisAoUsuario">
+      <input message="tns:associarPerfisAoUsuario" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/associarPerfisAoUsuarioRequest">
+    </input>
+      <output message="tns:associarPerfisAoUsuarioResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/associarPerfisAoUsuarioResponse">
+    </output>
+    </operation>
+    <operation name="listarPerfisDisponiveisParaAssociacao">
+      <input message="tns:listarPerfisDisponiveisParaAssociacao" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/listarPerfisDisponiveisParaAssociacaoRequest">
+    </input>
+      <output message="tns:listarPerfisDisponiveisParaAssociacaoResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/listarPerfisDisponiveisParaAssociacaoResponse">
+    </output>
+    </operation>
+    <operation name="listarUsuariosVinculadosAoUsuarioMaster">
+      <input message="tns:listarUsuariosVinculadosAoUsuarioMaster" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/listarUsuariosVinculadosAoUsuarioMasterRequest">
+    </input>
+      <output message="tns:listarUsuariosVinculadosAoUsuarioMasterResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/listarUsuariosVinculadosAoUsuarioMasterResponse">
+    </output>
+    </operation>
+    <operation name="incluir">
+      <input message="tns:incluir" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/incluirRequest">
+    </input>
+      <output message="tns:incluirResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/incluirResponse">
+    </output>
+    </operation>
+    <operation name="alterar">
+      <input message="tns:alterar" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/alterarRequest">
+    </input>
+      <output message="tns:alterarResponse" wsam:Action="http://usuarioportal.ws.saa.fit.cbpi/FuncionarioClienteWS/alterarResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="FuncionarioClienteWSPortBinding" type="tns:FuncionarioClienteWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="associarCnpjsAoUsuario">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="associarPerfisAoUsuario">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listarPerfisDisponiveisParaAssociacao">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listarUsuariosVinculadosAoUsuarioMaster">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="incluir">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="alterar">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="FuncionarioClienteWSService">
+    <port binding="tns:FuncionarioClienteWSPortBinding" name="FuncionarioClienteWSPort">
+      <soap:address location="http://wasdevtmp.ipiranga.com.br:80/WAsaaService/FuncionarioClienteWSService"/>
+    </port>
+  </service>
+</definitions>
