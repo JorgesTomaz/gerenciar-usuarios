@@ -3,6 +3,7 @@ package com.ibm.ipp_gerenciarusuarios.service;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -20,22 +21,28 @@ import cbpi.fit.saa.ws.usuarioportal.PerfilAcessoVO;
 import cbpi.fit.saa.ws.usuarioportal.ResponseListarClientesAssociadosAoUsuario;
 import cbpi.fit.saa.ws.usuarioportal.ResponseListarPerfisDoUsuario;
 import cbpi.fit.saa.ws.usuarioportal.ResponseServices;
-import cbpi.fit.saa.ws.usuarioportal.UsuarioPortalWSPortProxy;
+import cbpi.fit.saa.ws.usuarioportal.UsuarioPortalWS;
+import cbpi.fit.saa.ws.usuarioportal.UsuarioPortalWSProxy;
 
 public class UsuarioService implements Serializable{
 
 	private static final long serialVersionUID = -7277171533242969144L;
 
-	UsuarioPortalWSPortProxy usuarioService = new UsuarioPortalWSPortProxy();
+	UsuarioPortalWS usuarioService = new UsuarioPortalWSProxy();
+	
 	ClientService service = new ClientService();
 	
 	public List<DadosClienteRIVO> obterClientes(UsuarioTO usuario) {
 		ResponseListarClientesAssociadosAoUsuario clientesAssociadosAoUsuario;
-		List<DadosClienteRIVO> clientes = null;
-		clientesAssociadosAoUsuario = usuarioService.listarClientesAssociadosAoUsuario(usuario.getLogin());
-		clientes = clientesAssociadosAoUsuario.getListaDeClientes();
+		DadosClienteRIVO[] clientes = null;
+		try {
+			clientesAssociadosAoUsuario = usuarioService.listarClientesAssociadosAoUsuario(usuario.getLogin());
+			clientes = clientesAssociadosAoUsuario.getListaDeClientes();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
-		return clientes;
+		return Arrays.asList(clientes);
 	}
 	
 	public List<DadosClienteRIVO> obterClientes(String login) {
@@ -55,26 +62,42 @@ public class UsuarioService implements Serializable{
 
 	public void inativarUsuario(UsuarioVinculadoTO usuario) {
 		ResponseServices inativar;
-		inativar = usuarioService.inativar(usuario.getCodigo(), usuario.getMaster().getLogin());
-		System.out.println(inativar.getMensagem());
+		try {
+			inativar = usuarioService.inativar(usuario.getCodigo(), usuario.getMaster().getLogin());
+			System.out.println(inativar.getMensagem());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		usuario.setStatus(!usuario.getStatus());
 	}
 
 	public ResponseServices ativarUsuario(UsuarioVinculadoTO usuario) {
-		ResponseServices reativar;
-		reativar = usuarioService.reativar(usuario.getCodigo(), usuario.getMaster().getLogin());
+		ResponseServices reativar = null;
+		try {
+			reativar = usuarioService.reativar(usuario.getCodigo(), usuario.getMaster().getLogin());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return reativar;
 	}
 
 	public ResponseServices ativarUsuario(String codigoUsuario, String login) {
-		ResponseServices reativar;
-		reativar = usuarioService.reativar(codigoUsuario, login);
+		ResponseServices reativar = null;
+		try {
+			reativar = usuarioService.reativar(codigoUsuario, login);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return reativar;
 	}
 
 	public ResponseServices inativarUsuario(String codigoUsuario, String login) {
-		ResponseServices inativar;
-		inativar = usuarioService.inativar(codigoUsuario, login);
+		ResponseServices inativar = null;
+		try {
+			inativar = usuarioService.inativar(codigoUsuario, login);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		return inativar;
 	}
 
@@ -109,10 +132,15 @@ public class UsuarioService implements Serializable{
 	}
 
 	public List<PerfilTO> obterPerfis(String login) {
-		ResponseListarPerfisDoUsuario responseListarPerfisDoUsuario = usuarioService.listarPerfisDoUsuario(login);
+		ResponseListarPerfisDoUsuario responseListarPerfisDoUsuario = null;
+		try {
+			responseListarPerfisDoUsuario = usuarioService.listarPerfisDoUsuario(login);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		List<PerfilTO> perfis = null;
-		List<PerfilAcessoVO> listaDePerfis = responseListarPerfisDoUsuario.getListaDePerfis();
-		if(!listaDePerfis.isEmpty()) {
+		PerfilAcessoVO[] listaDePerfis = responseListarPerfisDoUsuario.getListaDePerfis();
+		if(listaDePerfis.length > 0) {
 			perfis = new ArrayList<PerfilTO>();
 			for(PerfilAcessoVO perfilAcesso: listaDePerfis) {
 				PerfilTO perfil = new PerfilTO();

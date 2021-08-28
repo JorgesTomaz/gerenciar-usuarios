@@ -7,27 +7,33 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.validator.ValidatorException;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.xml.namespace.QName;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.json.JSONArray;
 
 import com.ibm.ipp_gerenciarusuarios.exception.BusinessException;
+import com.ibm.ipp_gerenciarusuarios.to.PerfilLogadoTO;
 import com.ibm.ipp_gerenciarusuarios.to.PerfilTO;
 import com.ibm.ipp_gerenciarusuarios.to.UsuarioVinculadoTO;
 
 import br.com.ipiranga.aci.portalri.compartilhadas.to.UsuarioTO;
 import br.com.ipiranga.logging.logger.IPPLogger;
 import cbpi.fit.saa.ws.usuarioportal.DadosClienteRIVO;
-import cbpi.fit.saa.ws.usuarioportal.FuncionarioClienteWSPortProxy;
+import cbpi.fit.saa.ws.usuarioportal.FuncionarioClienteWS;
+import cbpi.fit.saa.ws.usuarioportal.FuncionarioClienteWSProxy;
 import cbpi.fit.saa.ws.usuarioportal.PerfilAcessoVO;
+import cbpi.fit.saa.ws.usuarioportal.ResponseGetUsuario;
 import cbpi.fit.saa.ws.usuarioportal.ResponseIncluirFuncionarioCliente;
 import cbpi.fit.saa.ws.usuarioportal.ResponseListarPerfisDisponiveisParaAssociacao;
 import cbpi.fit.saa.ws.usuarioportal.ResponseListarUsuariosVinculadosAoUsuarioMaster;
@@ -40,43 +46,20 @@ public class FuncionarioService implements Serializable{
 	
 	private static final int CODIGO_RETORNO_SUCESSO = 1;
 
-	private QName qname = new QName("", "FuncionarioClienteWSPort");
-
-	//private QName serviceName = new QName("", "FuncionarioClienteWSPort");
-
-	//private URL wsdlLocation = new URL();wsdlLocation, serviceName
-	
-	FuncionarioClienteWSPortProxy client = null;
-	
-	public FuncionarioService() {
-		try {
-			client = new FuncionarioClienteWSPortProxy(getUrl(), qname);
-		}catch (Exception e) {
-			System.out.println("Erro ao criar o client");
-			client = new FuncionarioClienteWSPortProxy();
-		}
-	}
+	FuncionarioClienteWS client = new FuncionarioClienteWSProxy();
 	
 	public List<UsuarioVinculadoTO> obterUsuariosVinculados(UsuarioTO usuarioMaster){
 		ResponseListarUsuariosVinculadosAoUsuarioMaster usuariosVinculadosAoUsuarioMaster;
 		List<UsuarioVinculadoTO> vinculados = null;
-		usuariosVinculadosAoUsuarioMaster = client.listarUsuariosVinculadosAoUsuarioMaster(usuarioMaster.getLogin());
-		List<UsuarioPortalVO> listaDeUsuarios =(usuariosVinculadosAoUsuarioMaster.getListaDeUsuarios());
-		vinculados = usuariosVinculados(listaDeUsuarios, usuarioMaster);
-		return vinculados;
-	}
-
-	private URL getUrl() {
-		URL server = null;
+		UsuarioPortalVO[] listaDeUsuarios = null;
 		try {
-			InitialContext ctx = new InitialContext();
-			server = (URL) ctx.lookup("url/endpointSAA");
-			System.out.println("url do Servico: " + server.toString());
-		} catch (NamingException e) {
-			System.out.println("url do Servico: " + e.getMessage());
+			usuariosVinculadosAoUsuarioMaster = client.listarUsuariosVinculadosAoUsuarioMaster(usuarioMaster.getLogin());
+			listaDeUsuarios = (usuariosVinculadosAoUsuarioMaster.getListaDeUsuarios());
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		return server;
+		vinculados = usuariosVinculados(Arrays.asList(listaDeUsuarios), usuarioMaster);
+		return vinculados;
 	}
 
 	private List<UsuarioVinculadoTO> usuariosVinculados(List<UsuarioPortalVO> listaDeUsuarios, UsuarioTO usuarioMaster) {
@@ -96,14 +79,23 @@ public class FuncionarioService implements Serializable{
 						.append(usuarioPortal.getTelefone());
 				usuarioVinculado.setTelefone(telefone.toString());
 				usuarioVinculado.setPerfis(obterPerfisSemDetalhes(usuarioPortal.getCodigo()));
-				usuarioVinculado.setClientes(usuarioPortal.getPontosDeVenda());
+				usuarioVinculado.setClientes(Arrays.asList(usuarioPortal.getPontosDeVenda()));
 				if(null != usuarioPortal.getDtInat()) {
 					usuarioVinculado.setStatus(Boolean.FALSE);
 				}else {
 					usuarioVinculado.setStatus(Boolean.TRUE);
 				}
 				usuarioVinculado.setMaster(usuarioMaster);
-				usuarioVinculado.setDtIncl(usuarioPortal.getDtIncl());
+				try {
+					GregorianCalendar cal = (GregorianCalendar)usuarioPortal.getDtIncl();
+					XMLGregorianCalendar dtIncl;
+					dtIncl = DatatypeFactory.newInstance().newXMLGregorianCalendar(cal);
+					usuarioVinculado.setDtIncl(dtIncl);
+				} catch (DatatypeConfigurationException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				usuariosVinculados.add(usuarioVinculado);
 			}
 		}
@@ -115,17 +107,21 @@ public class FuncionarioService implements Serializable{
 		IPPLogger.singleton().finest("Obtendo perfis sem detalhes de: ", usuarioLogin);
 		ResponseListarPerfisDisponiveisParaAssociacao disponiveisParaAssociacao;
 		List<PerfilTO> perfis = null;
-		disponiveisParaAssociacao = client.listarPerfisDisponiveisParaAssociacao(usuarioLogin);
-		if(!disponiveisParaAssociacao.getListaDePerfis().isEmpty()) {
-			List<PerfilAcessoVO> listaDePerfis = disponiveisParaAssociacao.getListaDePerfis();
-			perfis = new ArrayList<PerfilTO>();
-			for(PerfilAcessoVO perfilAcesso: listaDePerfis) {
-				PerfilTO perfil = new PerfilTO();
-				perfil.setCodigo(perfilAcesso.getCodigo());
-				perfil.setNome(perfilAcesso.getDescricao());
-				perfil.setDescricao(perfilAcesso.getDescricao());
-				perfis.add(perfil);
+		try {
+			disponiveisParaAssociacao = client.listarPerfisDisponiveisParaAssociacao(usuarioLogin);
+			if(disponiveisParaAssociacao.getListaDePerfis().length > 0) {
+				PerfilAcessoVO[] listaDePerfis = disponiveisParaAssociacao.getListaDePerfis();
+				perfis = new ArrayList<PerfilTO>();
+				for(PerfilAcessoVO perfilAcesso: listaDePerfis) {
+					PerfilTO perfil = new PerfilTO();
+					perfil.setCodigo(perfilAcesso.getCodigo());
+					perfil.setNome(perfilAcesso.getDescricao());
+					perfil.setDescricao(perfilAcesso.getDescricao());
+					perfis.add(perfil);
+				}
 			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		
 		return perfis;
@@ -135,17 +131,21 @@ public class FuncionarioService implements Serializable{
 		IPPLogger.singleton().finest("Obtendo perfis com detalhes de: ", usuarioLogin);
 		ResponseListarPerfisDisponiveisParaAssociacao disponiveisParaAssociacao;
 		List<PerfilTO> perfis = null;
-		disponiveisParaAssociacao = client.listarPerfisDisponiveisParaAssociacao(usuarioLogin);
-		if(!disponiveisParaAssociacao.getListaDePerfis().isEmpty()) {
-			List<PerfilAcessoVO> listaDePerfis = disponiveisParaAssociacao.getListaDePerfis();
-			perfis = new ArrayList<PerfilTO>();
-			for(PerfilAcessoVO perfilAcesso: listaDePerfis) {
-				PerfilTO perfil = new PerfilTO();
-				perfil.setCodigo(perfilAcesso.getCodigo());
-				perfil.setNome(perfilAcesso.getDescricao());
-				perfil.setDescricao(perfilAcesso.getDescricao());
-				perfis.add(perfil);
+		try {
+			disponiveisParaAssociacao = client.listarPerfisDisponiveisParaAssociacao(usuarioLogin);
+			if(disponiveisParaAssociacao.getListaDePerfis().length > 0) {
+				PerfilAcessoVO[] listaDePerfis = disponiveisParaAssociacao.getListaDePerfis();
+				perfis = new ArrayList<PerfilTO>();
+				for(PerfilAcessoVO perfilAcesso: listaDePerfis) {
+					PerfilTO perfil = new PerfilTO();
+					perfil.setCodigo(perfilAcesso.getCodigo());
+					perfil.setNome(perfilAcesso.getDescricao());
+					perfil.setDescricao(perfilAcesso.getDescricao());
+					perfis.add(perfil);
+				}
 			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 		JSONArray array = obterDetalhesPerfis();
 		return incluirDetalhes(perfis, array);
@@ -198,13 +198,25 @@ public class FuncionarioService implements Serializable{
 	}
 
 	public ResponseIncluirFuncionarioCliente incluir(UsuarioVinculadoTO novoUsuario) {
+		
 		List<String> cdPerfis = listarPerfis(novoUsuario.getPerfis());
+		String[] perfisArray = new String[cdPerfis.size()];
+		perfisArray = cdPerfis.toArray(perfisArray);
+		
+		ResponseIncluirFuncionarioCliente incluir = null;
 		
 		System.out.println("Parse dos dados do novo usuário");
 		UsuarioPortalVO usuarioPortal = parseDadosUsuario(novoUsuario);
 		
 		List<DadosClienteRIVO> pontosDeVenda = obterPontosDeVenda(novoUsuario.getClientes());
-		ResponseIncluirFuncionarioCliente incluir = client.incluir(novoUsuario.getMaster().getLogin(), usuarioPortal, cdPerfis, pontosDeVenda);
+		DadosClienteRIVO[] pontosDeVendaArray = new DadosClienteRIVO[pontosDeVenda.size()];
+		pontosDeVendaArray = pontosDeVenda.toArray(pontosDeVendaArray);
+		
+		try {
+			incluir = client.incluir(novoUsuario.getMaster().getLogin(), usuarioPortal, perfisArray, pontosDeVendaArray);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		
 		return incluir;
 	}
@@ -220,8 +232,8 @@ public class FuncionarioService implements Serializable{
 			if (services.getCodigo() != CODIGO_RETORNO_SUCESSO) {
 				throw new BusinessException(services.getCodigo(), services.getMensagem());
 			}
-			client.associarPerfisAoUsuario(usuarioVinculado.getMaster().getLogin(), usuarioPortal.getCodigo(), usuarioVinculado.getMaster().getLogin(), listarPerfis(usuarioVinculado.getPerfis()));
-			client.associarCnpjsAoUsuario(usuarioVinculado.getMaster().getLogin(), usuarioPortal.getCodigo(), usuarioVinculado.getMaster().getLogin(), usuarioVinculado.getClientes());
+			//client.associarPerfisAoUsuario(usuarioVinculado.getMaster().getLogin(), usuarioPortal.getCodigo(), usuarioVinculado.getMaster().getLogin(), listarPerfis(usuarioVinculado.getPerfis()));
+			//client.associarCnpjsAoUsuario(usuarioVinculado.getMaster().getLogin(), usuarioPortal.getCodigo(), usuarioVinculado.getMaster().getLogin(), usuarioVinculado.getClientes());
 			
 		} catch (Exception e) {
 			FacesMessage message = new FacesMessage();
@@ -272,5 +284,36 @@ public class FuncionarioService implements Serializable{
 			cdPerfis.add(perfil.getCodigo());
 		}
 		return cdPerfis;
+	}
+
+	public PerfilLogadoTO obterPerfilLogado(UsuarioTO usuario) {
+		PerfilLogadoTO perfilLogado = null;
+		try {
+			ResponseGetUsuario getUsuario = client.getUsuarioPorLogin(usuario.getLogin());
+			perfilLogado = parseDados(getUsuario.getUsuario());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return perfilLogado;
+	}
+
+	private PerfilLogadoTO parseDados(UsuarioPortalVO usuario) {
+		PerfilLogadoTO perfilLogado = new PerfilLogadoTO();
+		perfilLogado.setNome(usuario.getNome());
+		perfilLogado.setCodigo(usuario.getCodigo());
+		perfilLogado.setCpf(usuario.getCpf());
+		perfilLogado.setEmail(usuario.getEmail());
+		perfilLogado.setTelefone(usuario.getTelefone());
+		return perfilLogado;
+	}
+
+	public String resetSenha(UsuarioTO usuario, String loginUsuario) {
+		try {
+			ResponseServices recuperarSenha = client.recuperarSenha(loginUsuario, usuario.getLogin());
+			return recuperarSenha.getMensagem();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

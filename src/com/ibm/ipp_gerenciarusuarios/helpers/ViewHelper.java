@@ -108,13 +108,15 @@ public class ViewHelper implements Serializable {
 			e.printStackTrace();
 		}
 		IPPLogger.singleton().finest("master: ", usuario.isMaster());
-		perfilLogado = new PerfilLogadoTO();
+		perfilLogado = null;
+		perfilLogado = funcionarioService.obterPerfilLogado(usuario);
+		/*
 		perfilLogado.setNome(usuario.getNome());
 		perfilLogado.setCodigo(usuario.getLogin());
 		perfilLogado.setCpf(usuario.getEstabelecimentoSimulado().getCdPess());
 		perfilLogado.setEmail(usuario.getEstabelecimentoSimulado().getCdEmail().replace("+", ""));
+		 */
 		perfilLogado.setPerfis(usuarioService.obterPerfis(usuario.getLogin()));
-		// perfilLogado.setTelefone(usuario.getEstabelecimentoSimulado().get);
 		return SUCCESS;
 	}
 
@@ -440,7 +442,7 @@ public class ViewHelper implements Serializable {
 	}
 
 	public String resetDeSennha(String loginUsuario) {
-		String resetSenha = usuarioService.resetSenha(loginUsuario);
+		String resetSenha = funcionarioService.resetSenha(usuario, loginUsuario);
 		System.out.println("Reset de senha do: " + loginUsuario + resetSenha);
 		setMensagemSucesso("Pedido de reset de senha enviado. " + resetSenha);
 		return SUCCESS;
