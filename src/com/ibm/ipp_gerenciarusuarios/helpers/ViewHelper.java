@@ -22,13 +22,14 @@ import com.ibm.ipp_gerenciarusuarios.to.PerfilTO;
 import com.ibm.ipp_gerenciarusuarios.to.UsuarioVinculadoTO;
 import com.ibm.wps.pe.pc.std.core.PortletUtils;
 
+import br.com.ipiranga.FuncionarioClienteWSService.IncluirFuncionarioClienteResponse;
+import br.com.ipiranga.UsuarioPortalWSService.ServiceResponse;
 import br.com.ipiranga.aci.portalri.compartilhadas.bean.UsuarioAutenticado;
 import br.com.ipiranga.aci.portalri.compartilhadas.to.UsuarioTO;
 import br.com.ipiranga.aci.portalri.utils.PortalUtils;
 import br.com.ipiranga.logging.logger.IPPLogger;
 import cbpi.fit.saa.ws.usuarioportal.DadosClienteRIVO;
-import cbpi.fit.saa.ws.usuarioportal.ResponseIncluirFuncionarioCliente;
-import cbpi.fit.saa.ws.usuarioportal.ResponseServices;
+
 
 @ManagedBean(name = "viewhelper")
 @SessionScoped
@@ -175,16 +176,16 @@ public class ViewHelper implements Serializable {
 
 	public void ativarInativarUsuario(String codigoUsuario, boolean status) {
 		if (status) {
-			ResponseServices ativarUsuario = usuarioService.ativarUsuario(codigoUsuario, usuario.getLogin());
-			if (ativarUsuario.getCodigo() == 1) {
+			ServiceResponse ativarUsuario = usuarioService.ativarUsuario(codigoUsuario, usuario.getLogin());
+			if (ativarUsuario.get_return().getCodigo() == 1) {
 				setMensagemSucesso("Usuário Ativado com sucesso");
 			} else {
 				setMensagemErro("Erro ao ativar usuário");
 			}
 
 		} else {
-			ResponseServices inativarUsuario = usuarioService.inativarUsuario(codigoUsuario, usuario.getLogin());
-			if (inativarUsuario.getCodigo() == 1) {
+			ServiceResponse inativarUsuario = usuarioService.inativarUsuario(codigoUsuario, usuario.getLogin());
+			if (inativarUsuario.get_return().getCodigo() == 1) {
 				setMensagemSucesso("Usuário inativado com sucesso");
 			} else {
 				setMensagemErro("Erro ao inativar usuário");
@@ -412,7 +413,7 @@ public class ViewHelper implements Serializable {
 		System.out.println("Cadastrar usuário");
 		setMensagemSucesso(null);
 		setMensagemErro(null);
-		ResponseIncluirFuncionarioCliente incluirFuncionarioCliente = null;
+		IncluirFuncionarioClienteResponse incluirFuncionarioCliente = null;
 		if (!aceito || novoUsuario.getNome().isEmpty()) {
 			System.out.println("Erro na validação");
 			return "fail";
@@ -425,11 +426,11 @@ public class ViewHelper implements Serializable {
 			return "erro";
 		}
 
-		if (incluirFuncionarioCliente.getCodigo() == 1) {
+		if (incluirFuncionarioCliente.get_return().getCodigo() == 1) {
 			setMensagemSucesso("Usuário Cadastrado com sucesso");
 			return "/HomeView.xhtml?faces.redirect=true";
 		} else {
-			setMensagemSucesso("Erro ao cadastrar: " + incluirFuncionarioCliente.getMensagem());
+			setMensagemSucesso("Erro ao cadastrar: " + incluirFuncionarioCliente.get_return().getMensagem());
 			return "erro";
 		}
 	}

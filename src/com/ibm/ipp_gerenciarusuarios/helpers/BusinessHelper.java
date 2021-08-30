@@ -1,16 +1,9 @@
 package com.ibm.ipp_gerenciarusuarios.helpers;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
-
-import com.ibm.ipp_gerenciarusuarios.to.UsuarioVinculadoTO;
-
-import cbpi.fit.saa.ws.usuarioportal.DadosClienteRIVO;
 
 @ManagedBean(name="businesshelper")
 @RequestScoped
